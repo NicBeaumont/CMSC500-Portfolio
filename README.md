@@ -57,17 +57,17 @@ _Replace each "POE#" with the actual item you are including_
 ### L3: Computational Collaboration
 
 - [ ] For the roulette vs. tournament task, myself and my partners focused on aspects of the problem we were best specialized in, with myself focusing on ensuring the code was efficient, while my partners focused on properly implementing the algorithms, as they had done more prior experimentation than me.
-- [ ] POE2
+- [ ] I sought help with issues I had with compiling MABE after adding in my new evaluation modules, and was able to easily resolve them as a result, which was very useful as the issue was not one I myself would've anticipated or been able to find.
 - [ ] POE3*
 
 ### L4: Failure
 
 - [ ] There was a lot of trial and error in modifying the values for each task in logic_9.mabe, because even with very low rewards, the population would prioritize true, false, identity, and not, due to the ease or even garuntee of completing at least one of those tasks.
-- [ ] POE2
-- [ ] POE3*
+- [ ] I had issues getting MABE to recompile or recognize my new evaluation modules due to lack of knowlegde on MAKE files and forgetting to properly update my dependencies, which I sought help with and was easily able to resolve as a result.
+- [ ] Again on evaluation of the tasks in logic_9.mabe, I should've tried to implement a no-input evaluator, as I think that may have helped with the earlier mentioned task reward issues, though I'm not entierly certain.
 
 ### L5: Reflection and Metacognition
 
-- [ ] POE1
+- [ ] I would've liked to play around with the underlying C++ for evaluation in MABE more, namely revisiting an earlier idea I had to implement a no-input evaluator for true and false, especially as I think it may have resolved some issues with true/false being disproportionately rewarded.
 - [ ] POE2
 - [ ] POE3*
