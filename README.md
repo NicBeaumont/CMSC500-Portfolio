@@ -69,5 +69,5 @@ _Replace each "POE#" with the actual item you are including_
 ### L5: Reflection and Metacognition
 
 - [ ] I would've liked to play around with the underlying C++ for evaluation in MABE more, namely revisiting an earlier idea I had to implement a no-input evaluator for true and false, especially as I think it may have resolved some issues with true/false being disproportionately rewarded.
-- [ ] POE2
-- [ ] POE3*
+- [ ] An example output of my LOGIC16 code, as can be seen, the population doesn't perform all tasks, but it's still a large improvement over the initial attempts where it would only perform true, false, is, not, and occasionally and. 
+- [ ] The other portion of the example output, showing the best organism of each check. This more so shows where there's room to grow, as the best organism only performs 4 tasks, even though the population as a whole performs most of the tasks. The solutions that have worked best are providing no reward or even a slightly negative reward for true and false, trying to make sure organisms that only do true and false don't succeed. Similar methods are employed for is and not.
