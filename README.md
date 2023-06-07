@@ -18,47 +18,28 @@ The goals for your written reflection are:
 - **Make some justifications for this grade using the pieces of evidence you have provided.** This can look like whatever you want it to look like. You can format it as a bulleted list, as paragraphs, as a table -- whatever makes sense for your brain.
 - **Include both praise and critique.** No matter how you feel like you did, make sure you point out what you did well! Point out and own your successes. Include some compassionate critique too; where do you have capacity to grow? 
 
-
-## Possible Pieces of Evidence
-
-- In-Class Assignments/Projects 
-- Hackathon 
-- Final Project
-- Paper Discussion 
-- Class Notes
-- Self-eval check-in sheets 
-- Attendance
-- Reading/engagement on Persuall 
-- Possibly other things I haven't thought of!
-
-You can use the same piece of evidence for up to 2 different learning goals. 
-
-_When you make a copy, you can delete everything above here and use the below as a template._
-
-# YourNameHere CMSC 270 Final Portfolio
+# Nicolas H. Beaumont CMSC 500 Final Portfolio
 
 ## Checklist
 
-_Replace each "POE#" with the actual item you are including_
-
-2 pieces of evidence required for each. 3 pieces required for each if self-assigning an A or A-. 
+As this file is already here and will show up when opening the repository, I will add on to the checklist for my reflection and justification. I would say I've fairly consistently met or exceeded the benchmarks set out in the course, and therefore would assign myself an A in the class. I hope after going through the evidence and reasoning below, you come to a similar conclusion.
 
 ### L1: Evolution as an Algorithm
 - [ ] The file ga.py was from the tournament vs. roulette assignment, and was one of my first attemptes actually playing around with algorithms for selection and reproduction in ALife.
 - [ ] I modified logic_9.mabe to utilize my new evaluation conditions, then proceeded to have to modify the task rewards and reproduction conditions in order to encourage the population and the tasks it can perform to grow in a certain way.
-- [ ] POE3*
+- [ ] Implementing a genome, organism and population was the first thing we did coding-wise in artificial life, and is the foundation everything else is built off of.
 
 ### L2: Artificial Life as a Field
 
 - [ ] The reading Open Problems in Artificial Life provided me with a good overview of the current state of ALife as a field, as well as the potential directions it could be taken in the future though the open problems listed.
 - [ ] The reading Survival of the Flattest provided an interesting look at how higher rates of mutation and less specialized organisms can actually be better suited to problems or enviornments where conditions change rapidly.
-- [ ] POE3*
+- [ ] Our discussions in class, especially early in the term, were very enlightening on what ALife is as a field, and how it differentiates itself from other fields and problem-solving methods in CS, such as artificial intellegence.
 
 ### L3: Computational Collaboration
 
 - [ ] For the roulette vs. tournament task, myself and my partners focused on aspects of the problem we were best specialized in, with myself focusing on ensuring the code was efficient, while my partners focused on properly implementing the algorithms, as they had done more prior experimentation than me.
 - [ ] I sought help with issues I had with compiling MABE after adding in my new evaluation modules, and was able to easily resolve them as a result, which was very useful as the issue was not one I myself would've anticipated or been able to find.
-- [ ] POE3*
+- [ ] For our initial exercise on implementing an artificial organism and population, I worked with my partners to determine what such a program would require and how to best implement it, along with remembering how to specifically implement those things in C++.
 
 ### L4: Failure
 
