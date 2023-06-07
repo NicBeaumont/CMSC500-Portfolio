@@ -44,8 +44,8 @@ _Replace each "POE#" with the actual item you are including_
 2 pieces of evidence required for each. 3 pieces required for each if self-assigning an A or A-. 
 
 ### L1: Evolution as an Algorithm
-- [ ] POE1
-- [ ] POE2
+- [ ] The file ga.py was from the tournament vs. roulette assignment, and was one of my first attemptes actually playing around with algorithms for selection and reproduction in ALife.
+- [ ] I modified logic_9.mabe to utilize my new evaluation conditions, then proceeded to have to modify the task rewards and reproduction conditions in order to encourage the population and the tasks it can perform to grow in a certain way.
 - [ ] POE3*
 
 ### L2: Artificial Life as a Field
@@ -56,13 +56,13 @@ _Replace each "POE#" with the actual item you are including_
 
 ### L3: Computational Collaboration
 
-- [ ] POE1
+- [ ] For the roulette vs. tournament task, myself and my partners focused on aspects of the problem we were best specialized in, with myself focusing on ensuring the code was efficient, while my partners focused on properly implementing the algorithms, as they had done more prior experimentation than me.
 - [ ] POE2
 - [ ] POE3*
 
 ### L4: Failure
 
-- [ ] POE1
+- [ ] There was a lot of trial and error in modifying the values for each task in logic_9.mabe, because even with very low rewards, the population would prioritize true, false, identity, and not, due to the ease or even garuntee of completing at least one of those tasks.
 - [ ] POE2
 - [ ] POE3*
 
