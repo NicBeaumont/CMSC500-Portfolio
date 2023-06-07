@@ -28,6 +28,9 @@
 #include "evaluate/callable/EvalTaskNor.hpp"
 #include "evaluate/callable/EvalTaskXor.hpp"
 #include "evaluate/callable/EvalTaskEqu.hpp"
+#include "evaluate/callable/EvalTaskTrue.hpp"
+#include "evaluate/callable/EvalTaskFalse.hpp"
+#include "evaluate/callable/EvalTaskIs.hpp"
 #include "evaluate/static/EvalPacking.hpp"
 #include "evaluate/static/EvalRandom.hpp"
 
