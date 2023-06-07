@@ -1,5 +1,5 @@
 random_seed = 0;       // Seed for random number generator; use 0 to base on time.
-Var pop_size = 3600;   // Local value variable.
+Var pop_size = 25000;   // Local value variable.
 Var max_updates = 1000; // Local value variable.
 Var task_reward_type = "mult"; 
 Population main_pop;   // Collection of organisms
@@ -45,10 +45,48 @@ VirtualCPU_Inst_Replication inst_lib_repl { // Replication instructions for Virt
                                   // execute before its allowed to reproduce. Otherwise 
                                   // reproduction instructions do nothing.  Takes priority 
                                   // over `req_frac_inst_executed`; -1 to use fraction instead
-  req_frac_inst_executed = 0.75;  // The organism must have executed at least this fraction 
+  req_frac_inst_executed = 0.99;  // The organism must have executed at least this fraction 
                                   // of their genome to reproduce. Otherwise reproduction 
                                   // instructions do nothing. 
                                   // Overruled by `req_count_inst_executed`
+};
+EvalTaskIs task_is {
+  target_pop = "main_pop";      // Population to evaluate.
+  inputs_trait = "input";       // Which trait contains the organism's inputs?
+  outputs_trait = "output";     // Which trait contains the organism's outputs?
+  fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
+  performed_trait = "is_performed";// Which trait should track if BASE was executed?
+  reward_value = 2;             // How large is the reward for performing this task?
+  reward_type = task_reward_type;// How to apply the reward to the organism's merit?
+                                //  add: Additive. New merit = old merit + reward
+                                //  mult: Multiplicative. New merit = old merit * reward
+                                //  pow: Power. New merit = old merit * (2 ^ reward)
+
+};
+
+EvalTaskTrue task_true {          // Organism-triggered evaluation of NOT operation
+  target_pop = "main_pop";      // Population to evaluate.
+  inputs_trait = "input";       // Which trait contains the organism's inputs?
+  outputs_trait = "output";     // Which trait contains the organism's outputs?
+  fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
+  performed_trait = "true_performed";// Which trait should track if BASE was executed?
+  reward_value = 1;             // How large is the reward for performing this task?
+  reward_type = task_reward_type;// How to apply the reward to the organism's merit?
+                                //  add: Additive. New merit = old merit + reward
+                                //  mult: Multiplicative. New merit = old merit * reward
+                                //  pow: Power. New merit = old merit * (2 ^ reward)
+};
+EvalTaskFalse task_false {          // Organism-triggered evaluation of NOT operation
+  target_pop = "main_pop";      // Population to evaluate.
+  inputs_trait = "input";       // Which trait contains the organism's inputs?
+  outputs_trait = "output";     // Which trait contains the organism's outputs?
+  fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
+  performed_trait = "false_performed";// Which trait should track if BASE was executed?
+  reward_value = 1;             // How large is the reward for performing this task?
+  reward_type = task_reward_type;// How to apply the reward to the organism's merit?
+                                //  add: Additive. New merit = old merit + reward
+                                //  mult: Multiplicative. New merit = old merit * reward
+                                //  pow: Power. New merit = old merit * (2 ^ reward)
 };
 EvalTaskNot task_not {          // Organism-triggered evaluation of NOT operation
   target_pop = "main_pop";      // Population to evaluate.
@@ -56,7 +94,7 @@ EvalTaskNot task_not {          // Organism-triggered evaluation of NOT operatio
   outputs_trait = "output";     // Which trait contains the organism's outputs?
   fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
   performed_trait = "not_performed";// Which trait should track if BASE was executed?
-  reward_value = 2;             // How large is the reward for performing this task?
+  reward_value = 4;             // How large is the reward for performing this task?
   reward_type = task_reward_type;// How to apply the reward to the organism's merit?
                                 //  add: Additive. New merit = old merit + reward
                                 //  mult: Multiplicative. New merit = old merit * reward
@@ -68,7 +106,7 @@ EvalTaskNand task_nand {        // Organism-triggered evaluation of NAND operati
   outputs_trait = "output";     // Which trait contains the organism's outputs?
   fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
   performed_trait = "nand_performed";// Which trait should track if BASE was executed?
-  reward_value = 2;             // How large is the reward for performing this task?
+  reward_value = 4;             // How large is the reward for performing this task?
   reward_type = task_reward_type;// How to apply the reward to the organism's merit?
                                 //  add: Additive. New merit = old merit + reward
                                 //  mult: Multiplicative. New merit = old merit * reward
@@ -80,7 +118,7 @@ EvalTaskAnd task_and {          // Organism-triggered evaluation of AND operatio
   outputs_trait = "output";     // Which trait contains the organism's outputs?
   fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
   performed_trait = "and_performed";// Which trait should track if BASE was executed?
-  reward_value = 4;             // How large is the reward for performing this task?
+  reward_value = 8;             // How large is the reward for performing this task?
   reward_type = task_reward_type;// How to apply the reward to the organism's merit?
                                 //  add: Additive. New merit = old merit + reward
                                 //  mult: Multiplicative. New merit = old merit * reward
@@ -92,7 +130,7 @@ EvalTaskOrnot task_ornot {      // Organism-triggered evaluation of ORNOT operat
   outputs_trait = "output";     // Which trait contains the organism's outputs?
   fitness_trait = "child_merit";// Which trait should we increase if BASE was executed?
   performed_trait = "ornot_performed";// Which trait should track if BASE was executed?
-  reward_value = 4;             // How large is the reward for performing this task?
+  reward_value = 8;             // How large is the reward for performing this task?
   reward_type = task_reward_type;// How to apply the reward to the organism's merit?
                                 //  add: Additive. New merit = old merit + reward
                                 //  mult: Multiplicative. New merit = old merit * reward
@@ -158,10 +196,13 @@ EvalTaskEqu task_equ {          // Organism-triggered evaluation of EQU operatio
                                 //  mult: Multiplicative. New merit = old merit * reward
                                 //  pow: Power. New merit = old merit * (2 ^ reward)
 };
+
+
+
 VirtualCPUOrg avida_org {       // Organism consisting of Avida instructions.
-  point_mut_prob = 0.05;              // Probability of each instruction mutating on reproduction.
-  insertion_mut_prob = 0.01;              // Probability of each instruction mutating on reproduction.
-  deletion_mut_prob = 0.01;              // Probability of each instruction mutating on reproduction.
+  point_mut_prob = 0.1;              // Probability of each instruction mutating on reproduction.
+  insertion_mut_prob = 0.03;              // Probability of each instruction mutating on reproduction.
+  deletion_mut_prob = 0.03;              // Probability of each instruction mutating on reproduction.
   N = 0;                        // Initial number of instructions in genome
   init_random = 0;              // Should we randomize ancestor?  (0 = "blank" default)
   eval_time = 200;              // How many CPU cycles should we give organisms to run?
@@ -178,7 +219,7 @@ VirtualCPUOrg avida_org {       // Organism consisting of Avida instructions.
                               // File that contains the gennome used to initialize organisms.
   expanded_nop_args = 0;      // If true, some instructions (e.g., math) will use multiple nops to fully define the registers used
   use_speculative_execution = 1;// If true, we run as many instructions as possible and then cache the results. Instructions that interact with the population or other organisms will halt speculative execution.
-  max_speculative_insts = 20; // Maximum number of instructions to speculatively execute. -1 for genome length.
+  max_speculative_insts = -1; // Maximum number of instructions to speculatively execute. -1 for genome length.
   inst_set_input_filename = "../settings/VirtualCPUOrg/inst_set_traditional.txt"; 
                               // File that contains the instruction set to use. 
                               // One instruction name per line. Order is maintained.
@@ -207,6 +248,9 @@ fit_file.ADD_COLUMN("or_frac",          "main_pop.CALC_MEAN('or_performed')" );
 fit_file.ADD_COLUMN("nor_frac",         "main_pop.CALC_MEAN('nor_performed')" );
 fit_file.ADD_COLUMN("xor_frac",         "main_pop.CALC_MEAN('xor_performed')" );
 fit_file.ADD_COLUMN("equ_frac",         "main_pop.CALC_MEAN('equ_performed')" );
+fit_file.ADD_COLUMN("true_frac",             "main_pop.CALC_MEAN('true_performed')" );
+fit_file.ADD_COLUMN("false_frac",            "main_pop.CALC_MEAN('false_performed')" );
+fit_file.ADD_COLUMN("is_frac",               "main_pop.CALC_MEAN('is_performed')" );
 fit_file.ADD_COLUMN("dominant_genome",  "dominant_genome" );
 
 DataFile max_file { filename="max_org.csv"; };
@@ -224,6 +268,9 @@ max_file.ADD_COLUMN("or",          "best_org.TRAIT('or_performed')" );
 max_file.ADD_COLUMN("nor",         "best_org.TRAIT('nor_performed')" );
 max_file.ADD_COLUMN("xor",         "best_org.TRAIT('xor_performed')" );
 max_file.ADD_COLUMN("equ",         "best_org.TRAIT('equ_performed')" );
+max_file.ADD_COLUMN("true",        "best_org.TRAIT('true_performed')" );
+max_file.ADD_COLUMN("false",       "best_org.TRAIT('false_performed')" );
+max_file.ADD_COLUMN("is",       "best_org.TRAIT('is_performed')" );
 
 @START() {
   PRINT("random_seed = ", random_seed, "\n");  // Print seed at run start.
