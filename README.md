@@ -50,8 +50,8 @@ _Replace each "POE#" with the actual item you are including_
 
 ### L2: Artificial Life as a Field
 
-- [ ] POE1
-- [ ] POE2
+- [ ] The reading Open Problems in Artificial Life provided me with a good overview of the current state of ALife as a field, as well as the potential directions it could be taken in the future though the open problems listed.
+- [ ] The reading Survival of the Flattest provided an interesting look at how higher rates of mutation and less specialized organisms can actually be better suited to problems or enviornments where conditions change rapidly.
 - [ ] POE3*
 
 ### L3: Computational Collaboration
